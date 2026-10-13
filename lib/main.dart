@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'tools.dart';
+import 'terminal.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,8 +58,7 @@ class _ShellState extends State<Shell> {
           children: [
             HomeScreen(onOpenTools: () => setState(() => index = 1)),
             const ToolsScreen(),
-            const ComingSoon(
-                title: 'Terminal', step: 'Step 3', icon: Icons.terminal),
+            const TerminalScreen(),
             const ComingSoon(
                 title: 'Settings', step: 'Step 4', icon: Icons.settings),
           ],
