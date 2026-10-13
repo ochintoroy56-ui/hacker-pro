@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'tools.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,8 +56,7 @@ class _ShellState extends State<Shell> {
           index: index,
           children: [
             HomeScreen(onOpenTools: () => setState(() => index = 1)),
-            const ComingSoon(
-                title: 'Tools', step: 'Step 2', icon: Icons.grid_view),
+            const ToolsScreen(),
             const ComingSoon(
                 title: 'Terminal', step: 'Step 3', icon: Icons.terminal),
             const ComingSoon(
@@ -641,7 +641,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text('OPEN TOOLS / ARSENAL',
                       style: TextStyle(color: kGreen, fontSize: 16, fontWeight: FontWeight.w900)),
                   SizedBox(height: 2),
-                  Text('Access 12 powerful hacking tools',
+                  Text('Access 18 powerful tools',
                       style: TextStyle(color: Colors.white70, fontSize: 11)),
                 ],
               ),
