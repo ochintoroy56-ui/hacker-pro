@@ -1,0 +1,42 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code nao
+        uses: actions/checkout@v4
+
+      - name: Java setup
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Flutter setup
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Android folder banao
+        run: flutter create . --platforms=android --project-name hacker_pro
+
+      - name: App-er nam thik koro
+        run: sed -i 's/android:label="[^"]*"/android:label="Hacker Pro"/' android/app/src/main/AndroidManifest.xml
+
+      - name: Package nao
+        run: flutter pub get
+
+      - name: APK build koro
+        run: flutter build apk --release
+
+      - name: APK upload koro
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
